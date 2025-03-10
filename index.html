@@ -1023,17 +1023,14 @@
         const chatbotOptions = document.getElementById('chatbot-options');
 
         const responses = {
-            'salut': 'Salut ! Comment allez-vous aujourd’hui ? Je suis ici pour vous aider.',
             'tarifs': 'Nos tarifs : Gratuit - 0€ | Pro - 9,99€/mois | Entreprise - sur devis. Plus de détails dans la section "Tarifs".',
             'fonctionnalités': 'Nous offrons : ordonnances digitales, rappels intelligents, suivi médical en temps réel, et analyses de santé personnalisées.',
             'contact': 'Contactez-nous à mateo.olvr@icloud.com ou au 07 67 41 68 76.',
-            'aide': 'Je suis là pour vous guider ! Choisissez une option ci-dessous.',
-            'inscription': 'Pour vous inscrire, allez à la section "Tarifs" et sélectionnez un plan.',
-            'support': 'Support 24/7 pour les utilisateurs Pro. Sinon, utilisez la section "Contact" pour nous joindre.',
+            'aide': 'Je suis là pour vous guider ! Choisissez une option ci-dessous ou consultez notre site.',
             'au revoir': 'À bientôt ! Le chatbot va se fermer dans un instant.'
         };
 
-        const options = ['Salut', 'Tarifs', 'Fonctionnalités', 'Contact', 'Aide', 'Inscription', 'Support', 'Au revoir'];
+        const options = ['Tarifs', 'Fonctionnalités', 'Contact', 'Aide', 'Au revoir'];
 
         function sendMessage(message) {
             const msgDiv = document.createElement('div');
@@ -1048,11 +1045,7 @@
             options.forEach(option => {
                 const btn = document.createElement('button');
                 btn.className = 'chatbot-option';
-                if (option === 'Support') {
-                    btn.innerHTML = '<i class="fas fa-comments"></i> ' + option; // Icône bulle de conversation pour Support
-                } else {
-                    btn.textContent = option;
-                }
+                btn.textContent = option;
                 btn.addEventListener('click', () => {
                     const response = responses[option.toLowerCase()] || 'Désolé, je n’ai pas compris. Essayez une autre option !';
                     sendMessage(response);
@@ -1073,7 +1066,7 @@
             chatbot.style.display = 'flex';
             chatbotToggle.style.display = 'none';
             chatbotBody.innerHTML = '';
-            sendMessage('Bonjour ! Bienvenue chez PRESCRIVEO. Comment puis-je vous aider ?');
+            sendMessage('Bonjour ! Comment puis-je vous aider aujourd’hui ? Choisissez une option ci-dessous.');
             displayOptions();
         });
     </script>
