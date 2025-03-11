@@ -9,7 +9,6 @@
     <meta name="robots" content="index, follow">
     <title>PRESCRIVEO - Votre Santé Réinventée</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1v2+vL5YSkpB+xuJ8rD+JsXj7Q8R8z8J9a+i+Uy5cJLXrD+VKl5L+7c" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -23,6 +22,12 @@
             --gradient: linear-gradient(135deg, #ff6f61 0%, #feb47b 100%);
             --body-gradient: linear-gradient(to bottom, #fff5f0 0%, #feb47b 100%);
             --dark-gradient: linear-gradient(135deg, #1a202c 0%, #2d3748 50%);
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --font-size-sm: 1rem;
+            --font-size-md: 1.5rem;
+            --font-size-lg: 2rem;
         }
 
         [data-theme="dark"] {
@@ -58,7 +63,7 @@
             z-index: 1000;
             background: rgba(255, 245, 240, 0.95);
             backdrop-filter: blur(15px);
-            padding: 1.5rem 5rem;
+            padding: var(--spacing-sm) 5rem;
             transition: all 0.5s ease;
         }
 
@@ -92,7 +97,7 @@
 
         nav ul {
             display: flex;
-            gap: 3rem;
+            gap: var(--spacing-lg);
             list-style: none;
         }
 
@@ -100,19 +105,20 @@
             color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            padding: 0.75rem 1.5rem;
+            padding: 0.75rem var(--spacing-md);
             border-radius: 30px;
             transition: all 0.3s ease;
         }
 
-        nav a:hover {
+        nav a:hover, nav a:focus {
             color: var(--primary);
             background: rgba(255, 111, 97, 0.2);
+            outline: none;
         }
 
         .menu-btn, .theme-toggle {
             display: none;
-            font-size: 2rem;
+            font-size: var(--font-size-lg);
             background: none;
             border: none;
             cursor: pointer;
@@ -145,7 +151,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://source.unsplash.com/1920x1080/?healthcare,tech') center/cover no-repeat;
+            object-fit: cover;
             opacity: 0.15;
             z-index: 1;
             filter: blur(5px);
@@ -156,7 +162,7 @@
         .hero-content {
             z-index: 2;
             max-width: 1200px;
-            padding: 2rem;
+            padding: var(--spacing-md);
             background: rgba(255, 255, 255, 0.05);
             border-radius: 40px;
             backdrop-filter: blur(10px);
@@ -166,13 +172,13 @@
         .hero h1 {
             font-size: 5.5rem;
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: var(--spacing-lg);
             text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
             font-size: 1.8rem;
-            margin-bottom: 3rem;
+            margin-bottom: var(--spacing-lg);
             opacity: 0.9;
         }
 
@@ -195,10 +201,11 @@
             transition: transform 0.3s ease;
         }
 
-        .btn:hover {
+        .btn:hover, .btn:focus {
             background: var(--primary);
             color: white;
             transform: translateY(-5px);
+            outline: none;
         }
 
         .btn:hover i {
@@ -209,10 +216,10 @@
             background: transparent;
             border: 3px solid white;
             color: white;
-            margin-left: 2rem;
+            margin-left: var(--spacing-md);
         }
 
-        .btn.secondary:hover {
+        .btn.secondary:hover, .btn.secondary:focus {
             background: white;
             color: var(--primary);
         }
@@ -239,14 +246,14 @@
             display: flex;
             justify-content: center;
             gap: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: var(--spacing-lg);
             flex-wrap: wrap;
         }
 
         .tab-btn {
             background: var(--light);
             color: var(--text);
-            padding: 1rem 2rem;
+            padding: var(--spacing-sm) var(--spacing-md);
             border: none;
             border-radius: 30px;
             cursor: pointer;
@@ -261,9 +268,11 @@
             color: white;
         }
 
-        .tab-btn:hover {
+        .tab-btn:hover, .tab-btn:focus {
             background: var(--accent);
             color: white;
+            outline: 3px solid var(--primary);
+            outline-offset: 2px;
         }
 
         .tab-content {
@@ -280,12 +289,12 @@
         .features-grid, .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
+            gap: var(--spacing-lg);
         }
 
         .feature-card, .pricing-card {
             background: white;
-            padding: 3rem;
+            padding: var(--spacing-lg);
             border-radius: 30px;
             text-align: center;
             box-shadow: var(--shadow);
@@ -297,19 +306,20 @@
             box-shadow: 0 30px 60px rgba(255, 111, 97, 0.2);
         }
 
-        .feature-card i {
-            font-size: 4rem;
-            color: var(--primary);
-            margin-bottom: 2rem;
+        .feature-card svg {
+            width: 4rem;
+            height: 4rem;
+            fill: var(--primary);
+            margin-bottom: var(--spacing-md);
             transition: transform 0.3s ease;
         }
 
-        .feature-card:hover i {
+        .feature-card:hover svg {
             transform: scale(1.2);
         }
 
         .pricing-card h3 {
-            font-size: 2rem;
+            font-size: var(--font-size-lg);
             margin-bottom: 1.5rem;
             color: var(--secondary);
         }
@@ -349,7 +359,7 @@
 
         .testimonial {
             text-align: center;
-            padding: 3rem;
+            padding: var(--spacing-lg);
             position: absolute;
             width: 100%;
             opacity: 0;
@@ -368,7 +378,7 @@
         }
 
         .testimonial p {
-            font-size: 1.5rem;
+            font-size: var(--font-size-md);
             margin-bottom: 1.5rem;
             font-style: italic;
         }
@@ -417,7 +427,7 @@
 
         .contact-info h3 {
             color: var(--secondary);
-            margin-bottom: 2rem;
+            margin-bottom: var(--spacing-md);
             font-size: 2.2rem;
         }
 
@@ -425,7 +435,7 @@
         .contact-form textarea {
             width: 100%;
             padding: 1.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: var(--spacing-md);
             border: 2px solid #e5e7eb;
             border-radius: 15px;
             font-size: 1.2rem;
@@ -455,16 +465,20 @@
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
             transition: all 0.3s ease;
-            font-size: 1.8rem;
             z-index: 1001;
         }
 
-        .chatbot-toggle:hover {
+        .chatbot-toggle:hover, .chatbot-toggle:focus {
             background: var(--accent);
             transform: scale(1.1);
+            outline: 3px solid var(--primary);
+            outline-offset: 2px;
         }
 
-        .chatbot-toggle i {
+        .chatbot-toggle svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
             animation: bounce 2s infinite;
         }
 
@@ -497,7 +511,7 @@
             padding: 1.5rem;
             overflow-y: auto;
             background: #f9fafb;
-            max-height: 400px; /* Limite la hauteur pour éviter qu'il prenne tout l'écran */
+            max-height: 400px;
         }
 
         .message {
@@ -505,7 +519,7 @@
             padding: 1rem;
             border-radius: 12px;
             max-width: 85%;
-            font-size: 1rem;
+            font-size: var(--font-size-sm);
             line-height: 1.4;
             animation: fadeInMessage 0.3s ease-in;
         }
@@ -536,18 +550,13 @@
             font-size: 0.95rem;
             transition: all 0.3s ease;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
-        .chatbot-option:hover {
+        .chatbot-option:hover, .chatbot-option:focus {
             background: var(--accent);
             transform: translateY(-2px);
-        }
-
-        .chatbot-option i {
-            font-size: 1rem;
+            outline: 3px solid var(--primary);
+            outline-offset: 2px;
         }
 
         /* Footer */
@@ -572,8 +581,9 @@
             transition: all 0.3s ease;
         }
 
-        .footer-grid a:hover {
+        .footer-grid a:hover, .footer-grid a:focus {
             color: var(--accent);
+            outline: none;
         }
 
         .social-links {
@@ -587,9 +597,10 @@
             transition: all 0.4s ease;
         }
 
-        .social-links a:hover {
+        .social-links a:hover, .social-links a:focus {
             color: var(--accent);
             transform: translateY(-5px);
+            outline: none;
         }
 
         /* Responsive */
@@ -681,7 +692,7 @@
 
     <!-- Hero -->
     <section class="hero" id="accueil">
-        <div class="hero-background"></div>
+        <img src="https://source.unsplash.com/1920x1080/?healthcare,tech" loading="lazy" class="hero-background" alt="Fond technologique santé">
         <div class="hero-content">
             <h1>Révolutionnez Votre Santé</h1>
             <p>Une solution digitale innovante pour un bien-être connecté et personnalisé.</p>
@@ -704,7 +715,7 @@
         <div class="tab-content active" id="tab1">
             <div class="features-grid">
                 <div class="feature-card">
-                    <i class="fas fa-file-medical"></i>
+                    <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 00-4 4v4h8V6a4 4 0 00-4-4zm-2 10v6h4v-6h-4zm-6 6v4h16v-4H4z"/></svg>
                     <h3>Ordonnances Digitales</h3>
                     <p>Accédez et gérez vos prescriptions en ligne avec une sécurité optimale.</p>
                 </div>
@@ -713,7 +724,7 @@
         <div class="tab-content" id="tab2">
             <div class="features-grid">
                 <div class="feature-card">
-                    <i class="fas fa-bell"></i>
+                    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-10 10h2a8 8 0 018-8v-2zm0 4v6l4 2-1 2-5-2V6h2z"/></svg>
                     <h3>Rappels Intelligents</h3>
                     <p>Notifications personnalisées pour ne jamais oublier vos médicaments.</p>
                 </div>
@@ -722,7 +733,7 @@
         <div class="tab-content" id="tab3">
             <div class="features-grid">
                 <div class="feature-card">
-                    <i class="fas fa-user-md"></i>
+                    <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 00-4 4v4h8V6a4 4 0 00-4-4zm0 8v6h4v-6h-4z"/></svg>
                     <h3>Suivi Médical</h3>
                     <p>Connectez-vous avec vos professionnels de santé en temps réel.</p>
                 </div>
@@ -731,7 +742,7 @@
         <div class="tab-content" id="tab4">
             <div class="features-grid">
                 <div class="feature-card">
-                    <i class="fas fa-chart-line"></i>
+                    <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
                     <h3>Analyse Santé</h3>
                     <p>Visualisez vos progrès grâce à des rapports détaillés et intuitifs.</p>
                 </div>
@@ -882,8 +893,12 @@
     </footer>
 
     <!-- Chatbot -->
-    <div class="chatbot-toggle" id="chatbot-toggle">
-        <i class="fas fa-robot"></i>
+    <div class="chatbot-toggle" id="chatbot-toggle" aria-label="Ouvrir le chatbot">
+        <svg viewBox="0 0 24 24">
+            <rect x="8" y="2" width="8" height="8" rx="2"/>
+            <rect x="6" y="12" width="12" height="6" rx="2"/>
+            <rect x="10" y="20" width="4" height="2" rx="1"/>
+        </svg>
     </div>
     <div class="chatbot" id="chatbot">
         <div class="chatbot-header">
@@ -939,8 +954,12 @@
                     headers: { 'Accept': 'application/json' }
                 });
                 if (response.ok) {
-                    alert('Message envoyé avec succès !');
+                    const successMsg = document.createElement('p');
+                    successMsg.textContent = 'Merci ! Nous vous répondrons bientôt.';
+                    successMsg.style.color = 'var(--primary)';
+                    form.appendChild(successMsg);
                     form.reset();
+                    setTimeout(() => successMsg.remove(), 3000);
                 } else {
                     throw new Error('Erreur serveur');
                 }
@@ -974,8 +993,9 @@
         style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
         document.head.appendChild(style);
 
-        // Animate stats count
+        // Animate stats count (once only)
         function animateCount(element) {
+            if (element.dataset.animated) return;
             const target = parseInt(element.dataset.count);
             let count = 0;
             const increment = target / 50;
@@ -984,6 +1004,7 @@
                 if (count >= target) {
                     count = target;
                     clearInterval(interval);
+                    element.dataset.animated = true;
                 }
                 element.textContent = Math.round(count) + (element.textContent.includes('+') ? '+' : element.textContent.includes('%') ? '%' : '');
             }, 20);
@@ -1016,59 +1037,69 @@
             });
         });
 
-        // Chatbot
-        const chatbotToggle = document.getElementById('chatbot-toggle');
-        const chatbot = document.getElementById('chatbot');
-        const chatbotBody = document.getElementById('chatbot-body');
-        const chatbotOptions = document.getElementById('chatbot-options');
+        // Chatbot Module
+        const Chatbot = {
+            elements: {
+                toggle: document.getElementById('chatbot-toggle'),
+                container: document.getElementById('chatbot'),
+                body: document.getElementById('chatbot-body'),
+                options: document.getElementById('chatbot-options')
+            },
+            responses: {
+                'tarifs': 'Nos tarifs : Gratuit - 0€ | Pro - 9,99€/mois | Entreprise - sur devis. Plus de détails dans la section "Tarifs".',
+                'fonctionnalités': 'Nous offrons : ordonnances digitales, rappels intelligents, suivi médical en temps réel, et analyses de santé personnalisées.',
+                'contact': 'Contactez-nous à mateo.olvr@icloud.com ou au 07 67 41 68 76.',
+                'aide': 'Je suis là pour vous guider ! Choisissez une option ci-dessous ou consultez notre site.',
+                'au revoir': 'À bientôt ! Le chatbot va se fermer dans un instant.'
+            },
+            options: ['Tarifs', 'Fonctionnalités', 'Contact', 'Aide', 'Au revoir'],
 
-        const responses = {
-            'tarifs': 'Nos tarifs : Gratuit - 0€ | Pro - 9,99€/mois | Entreprise - sur devis. Plus de détails dans la section "Tarifs".',
-            'fonctionnalités': 'Nous offrons : ordonnances digitales, rappels intelligents, suivi médical en temps réel, et analyses de santé personnalisées.',
-            'contact': 'Contactez-nous à mateo.olvr@icloud.com ou au 07 67 41 68 76.',
-            'aide': 'Je suis là pour vous guider ! Choisissez une option ci-dessous ou consultez notre site.',
-            'au revoir': 'À bientôt ! Le chatbot va se fermer dans un instant.'
+            init() {
+                this.elements.toggle.addEventListener('click', () => this.open());
+            },
+
+            open() {
+                this.elements.container.style.display = 'flex';
+                this.elements.toggle.style.display = 'none';
+                this.elements.body.innerHTML = '';
+                this.sendMessage('Bonjour ! Comment puis-je vous aider aujourd’hui ? Choisissez une option ci-dessous.');
+                this.displayOptions();
+            },
+
+            sendMessage(message) {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'message bot-message';
+                msgDiv.textContent = message;
+                this.elements.body.appendChild(msgDiv);
+                this.elements.body.scrollTop = this.elements.body.scrollHeight;
+                this.displayOptions(); // Persist options after each message
+            },
+
+            displayOptions() {
+                this.elements.options.innerHTML = '';
+                this.options.forEach(option => {
+                    const btn = document.createElement('button');
+                    btn.className = 'chatbot-option';
+                    btn.textContent = option;
+                    btn.setAttribute('aria-label', `Option ${option}`);
+                    btn.addEventListener('click', () => {
+                        const response = this.responses[option.toLowerCase()] || 'Désolé, je n’ai pas compris. Essayez une autre option !';
+                        this.sendMessage(response);
+                        if (option.toLowerCase() === 'au revoir') {
+                            setTimeout(() => {
+                                this.elements.container.style.display = 'none';
+                                this.elements.toggle.style.display = 'flex';
+                                this.elements.body.innerHTML = '';
+                                this.elements.options.innerHTML = '';
+                            }, 2000);
+                        }
+                    });
+                    this.elements.options.appendChild(btn);
+                });
+            }
         };
 
-        const options = ['Tarifs', 'Fonctionnalités', 'Contact', 'Aide', 'Au revoir'];
-
-        function sendMessage(message) {
-            const msgDiv = document.createElement('div');
-            msgDiv.className = 'message bot-message';
-            msgDiv.textContent = message;
-            chatbotBody.appendChild(msgDiv);
-            chatbotBody.scrollTop = chatbotBody.scrollHeight;
-        }
-
-        function displayOptions() {
-            chatbotOptions.innerHTML = '';
-            options.forEach(option => {
-                const btn = document.createElement('button');
-                btn.className = 'chatbot-option';
-                btn.textContent = option;
-                btn.addEventListener('click', () => {
-                    const response = responses[option.toLowerCase()] || 'Désolé, je n’ai pas compris. Essayez une autre option !';
-                    sendMessage(response);
-                    if (option.toLowerCase() === 'au revoir') {
-                        setTimeout(() => {
-                            chatbot.style.display = 'none';
-                            chatbotToggle.style.display = 'flex';
-                            chatbotBody.innerHTML = '';
-                            chatbotOptions.innerHTML = '';
-                        }, 2000); // Ferme après 2 secondes
-                    }
-                });
-                chatbotOptions.appendChild(btn);
-            });
-        }
-
-        chatbotToggle.addEventListener('click', () => {
-            chatbot.style.display = 'flex';
-            chatbotToggle.style.display = 'none';
-            chatbotBody.innerHTML = '';
-            sendMessage('Bonjour ! Comment puis-je vous aider aujourd’hui ? Choisissez une option ci-dessous.');
-            displayOptions();
-        });
+        Chatbot.init();
     </script>
 </body>
 </html>
