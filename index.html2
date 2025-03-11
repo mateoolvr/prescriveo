@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PRESCRIVEO - La révolution digitale de votre santé, connectée et personnalisée.">
+    <meta name="keywords" content="santé digitale, ordonnances électroniques, suivi médical">
+    <meta name="author" content="Matéo OLIVIERI">
+    <title>PRESCRIVEO - Votre Santé Connectée</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">PRESCRIVEO</a>
+            <button class="menu-btn"><i class="fas fa-bars"></i></button>
+            <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+                    <li><a href="tarifs.html">Tarifs</a></li>
+                    <li><a href="about.html">À Propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="accueil">
+            <div class="hero-content">
+                <h1>Votre santé, simplifiée.</h1>
+                <p>Une solution digitale intuitive pour gérer vos soins au quotidien.</p>
+                <div class="btn-container">
+                    <a href="tarifs.html" class="btn">S’inscrire <i class="fas fa-user-plus"></i></a>
+                    <a href="#fonctionnalites" class="btn secondary">Découvrir <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="fonctionnalites">
+            <h2 class="section-title">Nos fonctionnalités</h2>
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="medecins">Médecins</button>
+                <button class="tab-btn" data-tab="pharmacies">Pharmacies</button>
+                <button class="tab-btn" data-tab="patients">Patients</button>
+            </div>
+            <div class="tab-container">
+                <div class="tab-content active" id="medecins">
+                    <div class="grid">
+                        <div class="card"><h3>Ordonnances digitales</h3><p>Création et partage sécurisés avec Vidal.</p></div>
+                        <div class="card"><h3>Suivi précis</h3><p>Observance analysée en temps réel.</p></div>
+                        <div class="card"><h3>Dossier unifié</h3><p>Accès instantané à l’historique.</p></div>
+                    </div>
+                </div>
+                <div class="tab-content" id="pharmacies">
+                    <div class="grid">
+                        <div class="card"><h3>Réception fluide</h3><p>Validation rapide des ordonnances.</p></div>
+                        <div class="card"><h3>Analyse avancée</h3><p>Détection des interactions médicamenteuses.</p></div>
+                        <div class="card"><h3>Stocks optimisés</h3><p>Gestion intelligente avec alertes.</p></div>
+                    </div>
+                </div>
+                <div class="tab-content" id="patients">
+                    <div class="grid">
+                        <div class="card"><h3>Rappels évolués</h3><p>Notifications sur mesure.</p></div>
+                        <div class="card"><h3>Journal santé</h3><p>Suivi et partage des ressentis.</p></div>
+                        <div class="card"><h3>Sécurité maximale</h3><p>Données cryptées en permanence.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials" id="temoignages">
+            <h2 class="section-title">Vos avis</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial active"><p>"Un outil simple et efficace."</p><h4>— Sophie L., Patient</h4></div>
+                <div class="testimonial"><p>"Gain de temps au quotidien."</p><h4>— Dr. Marc D., Médecin</h4></div>
+                <div class="testimonial"><p>"Technologie bien pensée."</p><h4>— Amina K., Pharmacienne</h4></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="logo">PRESCRIVEO</div>
+                <p>Votre santé, notre futur.</p>
+            </div>
+            <div>
+                <h3>Navigation</h3>
+                <p><a href="index.html">Accueil</a></p>
+                <p><a href="#fonctionnalites">Fonctionnalités</a></p>
+                <p><a href="tarifs.html">Tarifs</a></p>
+            </div>
+            <div>
+                <h3>Légal</h3>
+                <p><a href="#">Confidentialité</a></p>
+                <p><a href="#">Conditions</a></p>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2025 PRESCRIVEO - Matéo OLIVIERI</p>
+    </footer>
+
+    <div class="chatbot-toggle" id="chatbot-toggle">
+        <i class="fas fa-comment"></i>
+    </div>
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">Support PRESCRIVEO</div>
+        <div class="chatbot-body" id="chatbot-body"></div>
+        <div class="chatbot-options" id="chatbot-options"></div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
