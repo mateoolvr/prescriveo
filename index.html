@@ -194,6 +194,8 @@
             font-size: 1.2rem;
             transition: all 0.4s ease;
             box-shadow: var(--shadow);
+            border: none;
+            cursor: pointer;
         }
 
         .btn i {
@@ -431,11 +433,22 @@
             font-size: 2.2rem;
         }
 
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form label {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+
         .contact-form input,
         .contact-form textarea {
             width: 100%;
             padding: 1.5rem;
-            margin-bottom: var(--spacing-md);
+            margin-top: 0.5rem;
             border: 2px solid #e5e7eb;
             border-radius: 15px;
             font-size: 1.2rem;
@@ -447,6 +460,11 @@
             border-color: var(--primary);
             box-shadow: 0 0 15px rgba(255, 111, 97, 0.3);
             outline: none;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
         }
 
         /* Chatbot */
@@ -856,9 +874,14 @@
                 <p>123 Rue de la Santé, 75000 Paris</p>
             </div>
             <form class="contact-form" action="https://formspree.io/f/movjgznz" method="POST">
-                <input type="text" name="name" placeholder="Votre Nom" required aria-label="Nom">
-                <input type="email" name="email" placeholder="Votre Email" required aria-label="Email">
-                <textarea name="message" placeholder="Votre Message" rows="5" required aria-label="Message"></textarea>
+                <label>
+                    Votre email :
+                    <input type="email" name="email" placeholder="Votre Email" required aria-label="Email">
+                </label>
+                <label>
+                    Votre message :
+                    <textarea name="message" placeholder="Votre Message" required aria-label="Message"></textarea>
+                </label>
                 <button type="submit" class="btn">Envoyer <i class="fas fa-paper-plane"></i></button>
             </form>
         </div>
