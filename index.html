@@ -9,33 +9,33 @@
     <meta name="robots" content="index, follow">
     <title>PRESCRIVEO - Votre Santé Connectée</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #ff6f61;
-            --secondary: #2d3748;
-            --accent: #feb47b;
-            --light: #fff5f0;
-            --dark: #1a202c;
-            --text: #2d3748;
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            --gradient: linear-gradient(135deg, #ff6f61 0%, #feb47b 100%);
-            --body-gradient: linear-gradient(to bottom, #fff5f0 0%, #feb47b 100%);
-            --dark-gradient: linear-gradient(135deg, #1a202c 0%, #2d3748 50%);
+            --primary: #ff5733;
+            --secondary: #1e3a8a;
+            --accent: #facc15;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --text: #1e293b;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, #ff5733 0%, #facc15 100%);
+            --body-gradient: linear-gradient(to bottom, #f8fafc 0%, #ffedd5 100%);
+            --dark-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%);
             --spacing-sm: 1rem;
             --spacing-md: 2rem;
-            --spacing-lg: 3rem;
+            --spacing-lg: 4rem;
             --font-size-sm: 1rem;
-            --font-size-md: 1.5rem;
-            --font-size-lg: 2rem;
+            --font-size-md: 1.75rem;
+            --font-size-lg: 2.5rem;
         }
 
         [data-theme="dark"] {
-            --light: #1a202c;
-            --dark: #fff5f0;
-            --text: #fff5f0;
-            --secondary: #feb47b;
-            --body-gradient: linear-gradient(to bottom, #1a202c 0%, #2d3748 100%);
+            --light: #0f172a;
+            --dark: #f8fafc;
+            --text: #f8fafc;
+            --secondary: #facc15;
+            --body-gradient: linear-gradient(to bottom, #0f172a 0%, #1e3a8a 100%);
         }
 
         * {
@@ -51,8 +51,8 @@
             color: var(--text);
             line-height: 1.8;
             overflow-x: hidden;
-            transition: background 0.5s, color 0.5s;
-            animation: fadeInBody 1s ease-in;
+            transition: background 0.5s ease, color 0.5s ease;
+            animation: fadeInBody 1.2s ease-in-out;
         }
 
         header {
@@ -60,15 +60,16 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 245, 240, 0.95);
-            backdrop-filter: blur(15px);
+            background: rgba(248, 250, 252, 0.95);
+            backdrop-filter: blur(20px);
             padding: var(--spacing-sm) 5rem;
-            transition: all 0.5s ease;
+            transition: all 0.4s ease;
         }
 
         header.scrolled {
-            padding: 1rem 5rem;
+            padding: 0.8rem 5rem;
             box-shadow: var(--shadow);
+            background: rgba(248, 250, 252, 1);
         }
 
         .nav-container {
@@ -77,13 +78,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 70px; /* Hauteur fixe pour alignement */
         }
 
         .logo {
-            font-size: 2.2rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.4rem;
             font-weight: 700;
             color: var(--secondary);
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -96,23 +99,27 @@
 
         nav ul {
             display: flex;
-            gap: var(--spacing-lg);
+            gap: var(--spacing-md);
             list-style: none;
+            align-items: center;
         }
 
         nav a {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
             color: var(--text);
             text-decoration: none;
-            font-weight: 500;
-            padding: 0.75rem var(--spacing-md);
-            border-radius: 30px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
             transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
 
         nav a:hover, nav a:focus {
             color: var(--primary);
-            background: rgba(255, 111, 97, 0.2);
-            outline: none;
+            background: rgba(255, 87, 51, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 87, 51, 0.2);
         }
 
         .menu-btn, .theme-toggle {
@@ -126,7 +133,7 @@
         }
 
         .menu-btn:hover, .theme-toggle:hover {
-            transform: rotate(90deg);
+            transform: scale(1.1);
         }
 
         .hero {
@@ -139,59 +146,84 @@
             justify-content: center;
             text-align: center;
             color: white;
-            padding: 5rem;
-            animation: heroFade 1.5s ease-in;
+            padding: 6rem 5rem;
+            animation: heroFade 1.5s ease-in-out;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.3) 100%);
+            z-index: 1;
         }
 
         .hero-content {
             z-index: 2;
             max-width: 1200px;
-            padding: var(--spacing-md);
-            background: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 40px;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             box-shadow: var(--shadow);
+            animation: slideUp 1s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-md);
         }
 
         .hero h1 {
-            font-size: 5.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 6rem;
             font-weight: 700;
-            margin-bottom: var(--spacing-lg);
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin: 0;
+            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
-            font-size: 1.8rem;
-            margin-bottom: var(--spacing-lg);
-            opacity: 0.9;
+            font-size: 2rem;
+            margin: 0;
+            opacity: 0.95;
+            max-width: 800px;
+        }
+
+        .hero .btn-container {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            padding: 1.2rem 3.5rem;
-            background: white;
-            color: var(--primary);
+            padding: 1.4rem 4rem;
+            background: var(--primary);
+            color: white;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 500;
-            font-size: 1.2rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
             transition: all 0.4s ease;
-            box-shadow: var(--shadow);
+            box-shadow: 0 5px 20px rgba(255, 87, 51, 0.4);
             border: none;
             cursor: pointer;
         }
 
         .btn i {
-            margin-left: 0.75rem;
+            margin-left: 1rem;
             transition: transform 0.3s ease;
         }
 
         .btn:hover, .btn:focus {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-5px);
-            outline: none;
+            background: var(--accent);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(250, 204, 21, 0.5);
+            animation: pulse 1.5s infinite;
         }
 
         .btn:hover i {
@@ -202,35 +234,47 @@
             background: transparent;
             border: 3px solid white;
             color: white;
-            margin-left: var(--spacing-md);
+            box-shadow: none;
         }
 
         .btn.secondary:hover, .btn.secondary:focus {
             background: white;
             color: var(--primary);
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.4);
         }
 
         .section {
-            padding: 10rem 5rem;
+            padding: 12rem 5rem;
             max-width: 1600px;
             margin: 0 auto;
             position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-title {
-            font-size: 4rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
             color: var(--secondary);
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .tabs {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 2rem;
             margin-bottom: var(--spacing-lg);
             flex-wrap: wrap;
         }
@@ -238,32 +282,36 @@
         .tab-btn {
             background: var(--light);
             color: var(--text);
-            padding: var(--spacing-sm) var(--spacing-md);
+            padding: 1rem 2.5rem;
             border: none;
-            border-radius: 30px;
+            border-radius: 50px;
             cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
             transition: all 0.4s ease;
-            font-weight: 500;
-            font-size: 1.1rem;
             box-shadow: var(--shadow);
+            min-width: 150px;
+            text-align: center;
         }
 
         .tab-btn.active {
             background: var(--primary);
             color: white;
+            box-shadow: 0 5px 20px rgba(255, 87, 51, 0.4);
         }
 
         .tab-btn:hover, .tab-btn:focus {
             background: var(--accent);
             color: white;
-            outline: 3px solid var(--primary);
-            outline-offset: 2px;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(250, 204, 21, 0.4);
         }
 
         .tab-container {
             position: relative;
             overflow: hidden;
-            transition: height 0.5s ease;
+            transition: height 0.6s ease;
         }
 
         .tab-content {
@@ -273,7 +321,7 @@
             width: 100%;
             opacity: 0;
             transform: translateX(100%);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease;
             padding: var(--spacing-md) 0;
         }
 
@@ -288,53 +336,65 @@
             transform: translateX(-100%);
         }
 
-        .features-grid, .pricing-grid, .objectives-grid, .context-grid, .evolution-grid {
+        .features-grid, .pricing-grid, .context-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: var(--spacing-lg);
+            justify-items: center;
         }
 
-        .feature-card, .pricing-card, .objective-card, .context-card, .evolution-card {
+        .feature-card, .pricing-card, .context-card {
             background: white;
             padding: var(--spacing-lg);
             border-radius: 30px;
             text-align: center;
             box-shadow: var(--shadow);
             transition: all 0.5s ease;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .feature-card:hover, .pricing-card:hover, .objective-card:hover, .context-card:hover, .evolution-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 30px 60px rgba(255, 111, 97, 0.2);
+        .feature-card:hover, .pricing-card:hover, .context-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 87, 51, 0.2);
         }
 
-        .pricing-card h3, .objective-card h3, .context-card h3, .evolution-card h3 {
+        .pricing-card h3, .context-card h3 {
+            font-family: 'Poppins', sans-serif;
             font-size: var(--font-size-lg);
+            font-weight: 600;
             margin-bottom: 1.5rem;
             color: var(--secondary);
         }
 
         .pricing-card .price {
-            font-size: 3rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 1.5rem;
         }
 
-        .pricing-card ul, .feature-card ul, .objective-card ul, .context-card ul, .evolution-card ul {
+        .pricing-card ul, .feature-card ul, .context-card ul {
             list-style: none;
             margin-bottom: 2.5rem;
+            padding: 0;
+            flex-grow: 1;
         }
 
-        .pricing-card ul li, .feature-card ul li, .objective-card ul li, .context-card ul li, .evolution-card ul li {
-            margin: 0.75rem 0;
-            font-size: 1.1rem;
+        .pricing-card ul li, .feature-card ul li, .context-card ul li {
+            margin: 1rem 0;
+            font-size: 1.2rem;
         }
 
         .testimonials {
             background: var(--dark);
             color: white;
-            padding: 10rem 5rem;
+            padding: 12rem 5rem;
             position: relative;
         }
 
@@ -343,7 +403,9 @@
             margin: 0 auto;
             position: relative;
             overflow: hidden;
-            height: 220px;
+            height: 240px;
+            display: flex;
+            align-items: center;
         }
 
         .testimonial {
@@ -352,7 +414,7 @@
             position: absolute;
             width: 100%;
             opacity: 0;
-            transition: opacity 0.7s ease, transform 0.7s ease;
+            transition: opacity 0.8s ease, transform 0.8s ease;
             transform: translateX(100%);
         }
 
@@ -373,40 +435,53 @@
         }
 
         .testimonial h4 {
-            font-size: 1.2rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
             font-weight: 500;
         }
 
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 5rem;
+            gap: 6rem;
             background: white;
-            padding: 5rem;
+            padding: 6rem;
             border-radius: 40px;
             box-shadow: var(--shadow);
             transition: all 0.5s ease;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .contact-container:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 87, 51, 0.2);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .contact-info h3 {
+            font-family: 'Poppins', sans-serif;
             color: var(--secondary);
             margin-bottom: var(--spacing-md);
-            font-size: 2.2rem;
+            font-size: 2.5rem;
+            font-weight: 600;
         }
 
         .contact-form {
             display: flex;
             flex-direction: column;
+            gap: var(--spacing-md);
         }
 
         .contact-form label {
-            margin-bottom: var(--spacing-md);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text);
+            font-weight: 500;
         }
 
         .contact-form input,
@@ -423,21 +498,21 @@
         .contact-form input:focus,
         .contact-form textarea:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 15px rgba(255, 111, 97, 0.3);
+            box-shadow: 0 0 15px rgba(255, 87, 51, 0.3);
             outline: none;
         }
 
         .contact-form textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 140px;
         }
 
         .chatbot-toggle {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            width: 70px;
+            height: 70px;
             background: var(--gradient);
             color: white;
             border-radius: 50%;
@@ -445,143 +520,171 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 87, 51, 0.4);
+            transition: all 0.4s ease;
             z-index: 1001;
         }
 
         .chatbot-toggle:hover, .chatbot-toggle:focus {
             background: var(--accent);
             transform: scale(1.1);
-            outline: 3px solid var(--primary);
-            outline-offset: 2px;
+            box-shadow: 0 10px 30px rgba(250, 204, 21, 0.5);
         }
 
         .chatbot-toggle svg {
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             fill: white;
             animation: bounce 2s infinite;
         }
 
         .chatbot {
             position: fixed;
-            bottom: 100px;
-            right: 20px;
-            width: 360px;
+            bottom: 120px;
+            right: 30px;
+            width: 380px;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
             display: none;
             flex-direction: column;
             z-index: 1000;
             overflow: hidden;
-            animation: slideIn 0.3s ease-out;
+            animation: slideIn 0.4s ease-out;
         }
 
         .chatbot-header {
             background: var(--gradient);
             color: white;
-            padding: 1.2rem 1.5rem;
-            font-size: 1.2rem;
-            font-weight: 500;
+            padding: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
             text-align: center;
         }
 
         .chatbot-body {
             flex: 1;
-            padding: 1.5rem;
+            padding: 2rem;
             overflow-y: auto;
             background: #f9fafb;
-            max-height: 400px;
+            max-height: 420px;
         }
 
         .message {
-            margin: 0.75rem 0;
-            padding: 1rem;
-            border-radius: 12px;
+            margin: 1rem 0;
+            padding: 1.2rem;
+            border-radius: 15px;
             max-width: 85%;
             font-size: var(--font-size-sm);
-            line-height: 1.4;
-            animation: fadeInMessage 0.3s ease-in;
+            line-height: 1.5;
+            animation: fadeInMessage 0.4s ease-in;
         }
 
         .bot-message {
             background: white;
             color: var(--text);
             border: 1px solid #e5e7eb;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
 
         .chatbot-options {
-            padding: 1rem;
+            padding: 1.5rem;
             background: white;
             border-top: 1px solid #e5e7eb;
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            gap: 1rem;
+            justify-content: center;
         }
 
         .chatbot-option {
             background: var(--primary);
             color: white;
             border: none;
-            border-radius: 10px;
-            padding: 0.7rem 1.3rem;
+            border-radius: 12px;
+            padding: 0.8rem 1.5rem;
             cursor: pointer;
-            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 10px rgba(255, 87, 51, 0.2);
+            min-width: 120px;
+            text-align: center;
         }
 
         .chatbot-option:hover, .chatbot-option:focus {
             background: var(--accent);
-            transform: translateY(-2px);
-            outline: 3px solid var(--primary);
-            outline-offset: 2px;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(250, 204, 21, 0.4);
         }
 
         footer {
             background: var(--dark);
             color: white;
-            padding: 6rem 5rem 3rem;
+            padding: 8rem 5rem 4rem;
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 4rem;
+            gap: 5rem;
             max-width: 1600px;
-            margin: 0 auto 5rem;
+            margin: 0 auto 6rem;
+            justify-items: center;
+        }
+
+        .footer-grid > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .footer-grid a {
-            color: #a1a1aa;
+            color: #94a3b8;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .footer-grid a:hover, .footer-grid a:focus {
             color: var(--accent);
-            outline: none;
+            transform: translateX(5px);
+        }
+
+        .footer-grid a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .footer-grid a:hover::after {
+            width: 100%;
         }
 
         .social-links {
             text-align: center;
+            margin-top: var(--spacing-lg);
         }
 
         .social-links a {
             color: white;
-            font-size: 2.2rem;
-            margin: 0 1.5rem;
+            font-size: 2.5rem;
+            margin: 0 2rem;
             transition: all 0.4s ease;
         }
 
         .social-links a:hover, .social-links a:focus {
             color: var(--accent);
             transform: translateY(-5px);
-            outline: none;
         }
 
         @media (max-width: 1024px) {
@@ -589,7 +692,10 @@
                 grid-template-columns: 1fr;
             }
             .hero h1 {
-                font-size: 4rem;
+                font-size: 4.5rem;
+            }
+            .features-grid, .pricing-grid, .context-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
         }
 
@@ -613,42 +719,48 @@
                 display: flex;
             }
             .hero h1 {
-                font-size: 3rem;
+                font-size: 3.5rem;
             }
             .hero p {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
             }
             .section {
-                padding: 6rem 2rem;
+                padding: 8rem 2rem;
             }
             .chatbot {
                 width: 90%;
                 right: 5%;
-                bottom: 80px;
+                bottom: 90px;
             }
             .tabs {
                 flex-direction: column;
                 align-items: center;
-                gap: 1rem;
+                gap: 1.5rem;
             }
             .testimonial-slider {
-                height: 250px;
+                height: 280px;
             }
         }
 
         @keyframes fadeInBody { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes heroFade { from { opacity: 0; transform: scale(1.1); } to { opacity: 1; transform: scale(1); } }
+        @keyframes heroFade { from { opacity: 0; transform: scale(1.05); } to { opacity: 1; transform: scale(1); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
             40% { transform: translateY(-10px); }
             60% { transform: translateY(-5px); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         @keyframes slideIn {
             from { transform: translateX(100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
         @keyframes fadeInMessage {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
@@ -677,7 +789,7 @@
         <div class="hero-content">
             <h1>Votre Santé, Simplifiée et Connectée</h1>
             <p>Une application sécurisée avec votre carte Vitale pour gérer vos prescriptions et suivre vos traitements en toute simplicité.</p>
-            <div>
+            <div class="btn-container">
                 <a href="#tarifs" class="btn">S'inscrire <i class="fas fa-user-plus"></i></a>
                 <a href="#fonctionnalites" class="btn secondary">Découvrir <i class="fas fa-arrow-right"></i></a>
             </div>
@@ -956,39 +1068,13 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    if (entry.target.querySelector('h3[data-count]')) {
-                        animateCount(entry.target.querySelector('h3[data-count]'));
-                    }
                 }
             });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.feature-card, .pricing-card, .objective-card, .context-card, .evolution-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
         });
-
-        const style = document.createElement('style');
-        style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
-        document.head.appendChild(style);
-
-        function animateCount(element) {
-            if (element.dataset.animated) return;
-            const target = parseInt(element.dataset.count);
-            let count = 0;
-            const increment = target / 50;
-            const interval = setInterval(() => {
-                count += increment;
-                if (count >= target) {
-                    count = target;
-                    clearInterval(interval);
-                    element.dataset.animated = true;
-                }
-                element.textContent = Math.round(count) + (element.textContent.includes('+') ? '+' : element.textContent.includes('%') ? '%' : '');
-            }, 20);
-        }
 
         const testimonials = document.querySelectorAll('.testimonial');
         let currentTestimonial = 0;
@@ -1024,7 +1110,7 @@
                             activeContent.classList.remove('active', 'exiting');
                             newContent.classList.add('active');
                             adjustContainerHeight(container, newContent);
-                        }, 500);
+                        }, 600);
                     } else {
                         newContent.classList.add('active');
                         adjustContainerHeight(container, newContent);
