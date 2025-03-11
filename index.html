@@ -260,24 +260,41 @@
             outline-offset: 2px;
         }
 
+        .tab-container {
+            position: relative;
+            overflow: hidden;
+            transition: height 0.5s ease;
+        }
+
         .tab-content {
-            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transform: translateX(100%);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            padding: var(--spacing-md) 0;
         }
 
         .tab-content.active {
-            display: block;
+            position: relative;
             opacity: 1;
+            transform: translateX(0);
         }
 
-        .features-grid, .pricing-grid, .objectives-grid {
+        .tab-content.exiting {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+
+        .features-grid, .pricing-grid, .objectives-grid, .context-grid, .evolution-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: var(--spacing-lg);
         }
 
-        .feature-card, .pricing-card, .objective-card {
+        .feature-card, .pricing-card, .objective-card, .context-card, .evolution-card {
             background: white;
             padding: var(--spacing-lg);
             border-radius: 30px;
@@ -286,12 +303,12 @@
             transition: all 0.5s ease;
         }
 
-        .feature-card:hover, .pricing-card:hover, .objective-card:hover {
+        .feature-card:hover, .pricing-card:hover, .objective-card:hover, .context-card:hover, .evolution-card:hover {
             transform: translateY(-15px);
             box-shadow: 0 30px 60px rgba(255, 111, 97, 0.2);
         }
 
-        .pricing-card h3, .objective-card h3 {
+        .pricing-card h3, .objective-card h3, .context-card h3, .evolution-card h3 {
             font-size: var(--font-size-lg);
             margin-bottom: 1.5rem;
             color: var(--secondary);
@@ -304,12 +321,12 @@
             margin-bottom: 1.5rem;
         }
 
-        .pricing-card ul, .feature-card ul, .objective-card ul {
+        .pricing-card ul, .feature-card ul, .objective-card ul, .context-card ul, .evolution-card ul {
             list-style: none;
             margin-bottom: 2.5rem;
         }
 
-        .pricing-card ul li, .feature-card ul li, .objective-card ul li {
+        .pricing-card ul li, .feature-card ul li, .objective-card ul li, .context-card ul li, .evolution-card ul li {
             margin: 0.75rem 0;
             font-size: 1.1rem;
         }
@@ -666,10 +683,12 @@
             <nav role="navigation">
                 <ul>
                     <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#contexte">Contexte</a></li>
                     <li><a href="#objectifs">Objectifs</a></li>
                     <li><a href="#fonctionnalites">Fonctionnalités</a></li>
                     <li><a href="#tarifs">Tarifs</a></li>
                     <li><a href="#securite">Sécurité</a></li>
+                    <li><a href="#evolutions">Évolutions</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -680,10 +699,29 @@
     <section class="hero" id="accueil">
         <div class="hero-content">
             <h1>Votre Santé, Simplifiée et Connectée</h1>
-            <p>Une application pour centraliser la gestion de vos prescriptions médicales et en faire un processus fluide et sécurisé.</p>
+            <p>Une application sécurisée avec votre carte Vitale pour gérer vos prescriptions et suivre vos traitements en toute simplicité.</p>
             <div>
                 <a href="#tarifs" class="btn">S'inscrire <i class="fas fa-user-plus"></i></a>
                 <a href="#fonctionnalites" class="btn secondary">Découvrir <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contexte -->
+    <section class="section" id="contexte">
+        <h2 class="section-title">Pourquoi PRESCRIVEO ?</h2>
+        <div class="context-grid">
+            <div class="context-card">
+                <h3>Papier Obsolète</h3>
+                <p>Les ordonnances papier sont souvent perdues ou mal gérées à l’ère du numérique.</p>
+            </div>
+            <div class="context-card">
+                <h3>Transmission Manuelle</h3>
+                <p>Les patients doivent transmettre eux-mêmes les ordonnances, sans télétransmission sécurisée.</p>
+            </div>
+            <div class="context-card">
+                <h3>Oublis Fréquents</h3>
+                <p>Renouvellements et prises de médicaments sont souvent oubliés, compliquant l’observance.</p>
             </div>
         </div>
     </section>
@@ -694,15 +732,15 @@
         <div class="objectives-grid">
             <div class="objective-card">
                 <h3>Pour les Médecins</h3>
-                <p>Faciliter la création et le suivi des ordonnances numériques avec une télétransmission sécurisée aux pharmacies.</p>
+                <p>Faciliter la création et le suivi des ordonnances numériques avec télétransmission.</p>
             </div>
             <div class="objective-card">
                 <h3>Pour les Pharmacies</h3>
-                <p>Optimiser la réception des prescriptions et la gestion des renouvellements pour une meilleure observance.</p>
+                <p>Optimiser la réception des prescriptions et la gestion des renouvellements.</p>
             </div>
             <div class="objective-card">
                 <h3>Pour les Patients</h3>
-                <p>Aider à suivre les traitements avec des rappels personnalisés et un accès centralisé à l’historique médical.</p>
+                <p>Aider à suivre les traitements avec rappels et historique centralisé.</p>
             </div>
         </div>
     </section>
@@ -715,51 +753,53 @@
             <button class="tab-btn" data-tab="pharmacies">Pharmacies</button>
             <button class="tab-btn" data-tab="patients">Patients</button>
         </div>
-        <div class="tab-content active" id="medecins">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>Ordonnances Numériques</h3>
-                    <p>Création facile avec base Vidal et signature électronique sécurisée.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Suivi de l’Observance</h3>
-                    <p>Rapports sur l’adhésion des patients et notifications en cas de non-prise.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Alertes Interactions</h3>
-                    <p>Détection automatique des interactions médicamenteuses et contre-indications.</p>
-                </div>
-            </div>
-        </div>
-        <div class="tab-content" id="pharmacies">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>Réception Numérique</h3>
-                    <p>Ordonnances envoyées directement par les médecins avec validation rapide.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Gestion des Renouvellements</h3>
-                    <p>Rappels automatisés pour les patients et suivi des stocks en temps réel.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Messagerie Sécurisée</h3>
-                    <p>Communication directe avec médecins et patients pour clarifications.</p>
+        <div class="tab-container">
+            <div class="tab-content active" id="medecins">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Ordonnances Numériques</h3>
+                        <p>Création avec base Vidal, signature électronique et télétransmission sécurisée.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Suivi Observance</h3>
+                        <p>Rapports et notifications sur l’adhésion des patients au traitement.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Dossier Médical</h3>
+                        <p>Historique centralisé des prescriptions et ajustements des traitements.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="tab-content" id="patients">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>Rappels Personnalisés</h3>
-                    <p>Notifications pour les prises et renouvellements de médicaments.</p>
+            <div class="tab-content" id="pharmacies">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Réception Numérique</h3>
+                        <p>Ordonnances reçues directement avec validation rapide.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Analyse Interactions</h3>
+                        <p>Vérification des interactions médicamenteuses pour un conseil précis.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Suivi des Stocks</h3>
+                        <p>Alertes de réapprovisionnement basées sur les prescriptions.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <h3>Historique Médical</h3>
-                    <p>Stockage sécurisé des ordonnances et journal des effets secondaires.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Mode Voyage</h3>
-                    <p>Rappels adaptés aux fuseaux horaires pour les déplacements.</p>
+            </div>
+            <div class="tab-content" id="patients">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Rappels Personnalisés</h3>
+                        <p>Notifications pour prises et renouvellements, ajustées au voyage.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Journal de Santé</h3>
+                        <p>Noter effets secondaires et partager avec médecin/pharmacien.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Historique Sécurisé</h3>
+                        <p>Stockage des ordonnances et rapport médical exportable.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -784,7 +824,7 @@
                 <div class="price">9,99€/mois</div>
                 <ul>
                     <li>Fonctionnalités gratuites</li>
-                    <li>Suivi avancé et alertes</li>
+                    <li>Rappels avancés & journal</li>
                     <li>Messagerie sécurisée</li>
                     <li>Support 24/7</li>
                 </ul>
@@ -810,15 +850,34 @@
         <div class="features-grid">
             <div class="feature-card">
                 <h3>Conformité RGPD</h3>
-                <p>Hébergement sécurisé respectant les normes européennes de protection des données.</p>
+                <p>Hébergement sécurisé respectant les normes européennes.</p>
             </div>
             <div class="feature-card">
-                <h3>Authentification Renforcée</h3>
-                <p>Double authentification et biométrie pour un accès sécurisé.</p>
+                <h3>Authentification</h3>
+                <p>Double authentification et biométrie pour un accès sûr.</p>
             </div>
             <div class="feature-card">
                 <h3>Accès Contrôlé</h3>
-                <p>Données accessibles uniquement avec l’accord du patient et du médecin.</p>
+                <p>Données accessibles uniquement avec accord patient/médecin.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Évolutions Futures -->
+    <section class="section" id="evolutions">
+        <h2 class="section-title">Vers l’Avenir</h2>
+        <div class="evolution-grid">
+            <div class="evolution-card">
+                <h3>Intégration IA</h3>
+                <p>Recommandations basées sur analyses de données cliniques.</p>
+            </div>
+            <div class="evolution-card">
+                <h3>Appareils Connectés</h3>
+                <p>Suivi via tensiomètres ou glucomètres pour ajustements.</p>
+            </div>
+            <div class="evolution-card">
+                <h3>Mode Famille</h3>
+                <p>Gestion des traitements pour enfants ou proches aidés.</p>
             </div>
         </div>
     </section>
@@ -828,15 +887,15 @@
         <h2 class="section-title">Ce Qu'ils Disent</h2>
         <div class="testimonial-slider">
             <div class="testimonial active">
-                <p>"Une solution qui simplifie enfin la gestion des traitements chroniques."</p>
+                <p>"Fini le stress des ordonnances perdues, tout est clair et organisé."</p>
                 <h4>— Sophie L., Patient</h4>
             </div>
             <div class="testimonial">
-                <p>"Un outil précieux pour suivre mes patients en temps réel."</p>
+                <p>"La télétransmission aux pharmacies simplifie mon quotidien."</p>
                 <h4>— Dr. Marc D., Médecin</h4>
             </div>
             <div class="testimonial">
-                <p>"Les renouvellements sont maintenant plus rapides et organisés."</p>
+                <p>"Je peux mieux conseiller mes patients avec l’historique."</p>
                 <h4>— Amina K., Pharmacienne</h4>
             </div>
         </div>
@@ -876,10 +935,12 @@
             <div>
                 <h3>Navigation</h3>
                 <p><a href="#accueil">Accueil</a></p>
+                <p><a href="#contexte">Contexte</a></p>
                 <p><a href="#objectifs">Objectifs</a></p>
                 <p><a href="#fonctionnalites">Fonctionnalités</a></p>
                 <p><a href="#tarifs">Tarifs</a></p>
                 <p><a href="#securite">Sécurité</a></p>
+                <p><a href="#evolutions">Évolutions</a></p>
                 <p><a href="#contact">Contact</a></p>
             </div>
             <div>
@@ -980,7 +1041,7 @@
             });
         }, { threshold: 0.2 });
 
-        document.querySelectorAll('.feature-card, .stat-item, .pricing-card, .objective-card').forEach(el => {
+        document.querySelectorAll('.feature-card, .stat-item, .pricing-card, .objective-card, .context-card, .evolution-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease';
@@ -1022,14 +1083,42 @@
         document.querySelectorAll('.tabs').forEach(tabContainer => {
             const buttons = tabContainer.querySelectorAll('.tab-btn');
             const contents = tabContainer.nextElementSibling.querySelectorAll('.tab-content');
+            const container = tabContainer.nextElementSibling;
+
             buttons.forEach(button => {
                 button.addEventListener('click', () => {
+                    const targetTab = button.dataset.tab;
+                    const activeContent = container.querySelector('.tab-content.active');
+                    const newContent = document.getElementById(targetTab);
+
+                    if (activeContent === newContent) return;
+
                     buttons.forEach(btn => btn.classList.remove('active'));
-                    contents.forEach(content => content.classList.remove('active'));
                     button.classList.add('active');
-                    document.getElementById(button.dataset.tab).classList.add('active');
+
+                    if (activeContent) {
+                        activeContent.classList.add('exiting');
+                        setTimeout(() => {
+                            activeContent.classList.remove('active', 'exiting');
+                            newContent.classList.add('active');
+                            adjustContainerHeight(container, newContent);
+                        }, 500); // Durée de la transition (0.5s)
+                    } else {
+                        newContent.classList.add('active');
+                        adjustContainerHeight(container, newContent);
+                    }
                 });
             });
+
+            function adjustContainerHeight(container, activeContent) {
+                container.style.height = `${activeContent.offsetHeight}px`;
+            }
+
+            // Initialisation de la hauteur pour le premier onglet actif
+            const initialActive = container.querySelector('.tab-content.active');
+            if (initialActive) {
+                adjustContainerHeight(container, initialActive);
+            }
         });
 
         const Chatbot = {
@@ -1040,13 +1129,15 @@
                 options: document.getElementById('chatbot-options')
             },
             responses: {
-                'tarifs': 'Nos tarifs : Gratuit - 0€ | Pro - 9,99€/mois | Entreprise - sur devis. Plus de détails dans la section "Tarifs".',
-                'fonctionnalités': 'Nous offrons des outils pour médecins (ordonnances numériques, suivi), pharmacies (gestion, renouvellements) et patients (rappels, historique).',
+                'tarifs': 'Nos tarifs : Gratuit - 0€ | Pro - 9,99€/mois | Entreprise - sur devis. Plus de détails dans "Tarifs".',
+                'fonctionnalités': 'Outils pour médecins (ordonnances, suivi), pharmacies (réception, analyse) et patients (rappels, journal).',
+                'contexte': 'Les ordonnances papier se perdent, les renouvellements sont oubliés, et il manque une télétransmission sécurisée.',
+                'sécurité': 'Conformité RGPD, double authentification et accès contrôlé pour vos données.',
+                'évolutions': 'IA pour recommandations, intégration d’appareils connectés et mode famille sont prévus.',
                 'contact': 'Contactez-nous à mateo.olvr@icloud.com ou au 07 67 41 68 76.',
-                'sécurité': 'Conformité RGPD, double authentification et accès contrôlé pour protéger vos données.',
-                'au revoir': 'À bientôt ! Le chatbot va se fermer dans un instant.'
+                'au revoir': 'À bientôt ! Le chatbot se ferme dans un instant.'
             },
-            options: ['Tarifs', 'Fonctionnalités', 'Contact', 'Sécurité', 'Au revoir'],
+            options: ['Tarifs', 'Fonctionnalités', 'Contexte', 'Sécurité', 'Évolutions', 'Contact', 'Au revoir'],
 
             init() {
                 this.elements.toggle.addEventListener('click', () => this.open());
